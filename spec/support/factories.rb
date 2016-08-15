@@ -6,7 +6,5 @@ FactoryGirl.define do
   factory :idea do
     title 
     body 
-    quality 1
-
   end
 end
