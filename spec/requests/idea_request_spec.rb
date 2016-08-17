@@ -30,8 +30,21 @@ RSpec.describe "idea endpoint" do
   end
 
   context "alter idea data" do
-    it "creates an idea" do
+    let!(:idea1) { create(:idea) }
+    let!(:idea2) { create(:idea) }
 
+    it "deletes an idea" do
+      expect(Idea.where(id: idea1.id, title: idea1.title)).to exist
+      expect(Idea.where(id: idea2.id, title: idea2.title)).to exist
+      
+      delete "/api/v1/ideas/#{idea1.id}"
+
+      expect(response.status).to eq(204)
+      expect(Idea.where(id: idea1.id, title: item1.title)).to_not exist
+      expect(Idea.where(id: idea2.id, title: item2.title)).to exist
+    end
+
+    it "creates an idea" do
       new_idea_params = { title: "Start Cubby Stuffers", 
                           body: "delicious", 
                           quality: "genius"
