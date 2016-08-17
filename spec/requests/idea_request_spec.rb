@@ -50,7 +50,7 @@ RSpec.describe "idea endpoint" do
                           quality: "genius"
                         }
 
-      post "/api/v1/ideas", params: new_idea_params
+      post "/api/v1/ideas", params: { idea: new_idea_params }
 
       expect(response.status).to eq(201)
 
