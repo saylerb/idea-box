@@ -28,5 +28,33 @@ RSpec.describe "idea endpoint" do
       expect(idea2_data[:quality]).to eq('swill')
     end
   end
+
+  context "alter idea data" do
+    it "creates an idea" do
+
+      new_idea_params = { title: "Start Cubby Stuffers", 
+                          body: "delicious", 
+                          quality: "genius"
+                        }
+
+      post "/api/v1/ideas", { idea: new_idea_params }
+
+      expect(response.status).to eq(201)
+
+      new_idea_data = JSON.parse(response.body, symbolize_names: :true )
+
+      expect(new_idea_data.length).to eq(3)
+      expect(new_idea_data[:title]).to eq(new_idea_params[:title])
+      expect(new_idea_data[:body]).to eq(new_idea_params[:body])
+      expect(new_idea_data[:quality]).to eq(new_idea_params[:quality])
+
+      new_idea = Idea.last
+
+      expect(new_idea.title).to eq(new_idea_params[:title])
+      expect(new_idea.body).to eq(new_idea_params[:body])
+      expect(new_idea.quality).to eq(new_idea_params[:quality])
+    end
+  end
+
 end
 
