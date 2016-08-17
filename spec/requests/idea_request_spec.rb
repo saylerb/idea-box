@@ -37,13 +37,12 @@ RSpec.describe "idea endpoint" do
                           quality: "genius"
                         }
 
-      post "/api/v1/ideas", { idea: new_idea_params }
+      post "/api/v1/ideas", params: { idea: new_idea_params }
 
       expect(response.status).to eq(201)
 
-      new_idea_data = JSON.parse(response.body, symbolize_names: :true )
+      new_idea_data = JSON.parse(response.body, symbolize_names: :true).dig(:idea)
 
-      expect(new_idea_data.length).to eq(3)
       expect(new_idea_data[:title]).to eq(new_idea_params[:title])
       expect(new_idea_data[:body]).to eq(new_idea_params[:body])
       expect(new_idea_data[:quality]).to eq(new_idea_params[:quality])
