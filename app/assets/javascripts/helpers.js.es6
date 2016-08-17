@@ -1,9 +1,32 @@
 function appendRow(idea) {
-   $("#table-body").append("<tr id=idea-"+ idea.id +">" +
-     "<td contenteditable='true' class='title input' id=title-" + idea.id + ">" + idea.title + "</td>" +
-     "<td contenteditable='true' class='body input' id=body-" + idea.id + ">" + idea.body + "</td>" +
-     "<td>" + idea.quality + "</td>" +
-     "<td>" + "<button type='button' id='" + idea.id + "' " + "class='delete'>Delete</button>" + "</td>" + "</tr>"
+  $("#table-body").append(
+    "<tr id=idea-"+ idea.id +">" +
+      "<td contenteditable='true' class='title input' id=title-" + idea.id + ">" +
+        idea.title + "</td>" + 
+
+      "<td contenteditable='true' class='body input' id=body-" + idea.id + ">" +
+        idea.body + 
+      "</td>" +
+
+      "<td>" + 
+        idea.quality + 
+      "</td>" +
+
+      "<td>" + 
+        "<div class='btn-group-vertical'>" + 
+          "<button type='button' id='upvote-" + idea.id + "'" + "class='upvote btn btn-primary'>"+ 
+            "<span class='glyphicon glyphicon-arrow-up'></span>" +
+          "</button>" + 
+          "<button type='button' id='downvote-" + idea.id + "'" + "class='downvote btn btn-primary'>" +
+            "<span class='glyphicon glyphicon-arrow-down'></span>" +
+          "</button>" + 
+        "</div>" + 
+      "</td>" + 
+
+      "<td>" + "<button type='button' id='" + idea.id + "'" + "class='delete btn btn-danger'>" +
+            "<span class='glyphicon glyphicon-remove'></span>" +
+      "</button>" + "</td>" +
+    "</tr>"
    )
 }
 
