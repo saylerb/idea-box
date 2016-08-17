@@ -28,7 +28,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "active_model_serializers"
+gem 'active_model_serializers'
+gem "sprockets"
+gem "sprockets-es6", require: 'sprockets/es6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,12 +45,14 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails"
-  gem "shoulda-matchers"
-  gem "factory_girl_rails"
-  gem "simplecov"
-  gem "capybara"
-  gem "database_cleaner"
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'simplecov'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem "capybara-webkit"
 end
 
 
