@@ -67,6 +67,4 @@ RSpec.describe "idea endpoint" do
       expect(new_idea.quality).to eq(new_idea_params[:quality])
     end
   end
-
 end
-
