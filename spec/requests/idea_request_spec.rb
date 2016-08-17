@@ -66,5 +66,31 @@ RSpec.describe "idea endpoint" do
       expect(new_idea.body).to eq(new_idea_params[:body])
       expect(new_idea.quality).to eq(new_idea_params[:quality])
     end
+
+    it "updates an idea" do
+      expect(Idea.where(id: idea1.id, title: idea1.title)).to exist
+
+      edit_idea_params = { title: "Buy oreos", 
+                          body: "This is awesome!", 
+                          quality: "genius"
+                         }
+
+      put "/api/v1/ideas/#{idea1.id}", params: { idea: edit_idea_params}
+
+      expect(response.status).to eq(200)
+
+      edit_idea = Idea.find(idea1.id)
+
+      expect(edit_idea.title).to eq(edit_idea_params[:title])
+      expect(edit_idea.body).to eq(edit_idea_params[:body])
+      expect(edit_idea.quality).to eq(edit_idea_params[:quality])
+
+      edit_idea_data = JSON.parse(response.body, symbolize_names: :true)
+
+      expect(edit_idea_data[:title]).to eq(edit_idea_params[:title])
+      expect(edit_idea_data[:body]).to eq(edit_idea_params[:body])
+      expect(edit_idea_data[:quality]).to eq(edit_idea_params[:quality])
+
+    end
   end
 end
