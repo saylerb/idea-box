@@ -16,6 +16,11 @@ class Api::V1::IdeasController < Api::V1::ApiBaseController
     idea = Idea.find(params[:id]).destroy
   end
 
+  def update
+    idea = Idea.update(params[:id], idea_params)
+    render json: idea, status: 200
+  end
+
   private
 
   def idea_params

@@ -73,11 +73,17 @@ RSpec.describe "idea endpoint" do
       edit_idea_params = { title: "Buy oreos", 
                           body: "This is awesome!", 
                           quality: "genius"
-                        }
+                         }
 
-      patch "/api/v1/ideas/#{idea1.id}", params: { idea: edit_idea_params}
+      put "/api/v1/ideas/#{idea1.id}", params: { idea: edit_idea_params}
 
-      expect(response.status).to eq(204)
+      expect(response.status).to eq(200)
+
+      edit_idea = Idea.find(idea1.id)
+
+      expect(edit_idea.title).to eq(edit_idea_params[:title])
+      expect(edit_idea.body).to eq(edit_idea_params[:body])
+      expect(edit_idea.quality).to eq(edit_idea_params[:quality])
 
       edit_idea_data = JSON.parse(response.body, symbolize_names: :true)
 
@@ -85,11 +91,6 @@ RSpec.describe "idea endpoint" do
       expect(edit_idea_data[:body]).to eq(edit_idea_params[:body])
       expect(edit_idea_data[:quality]).to eq(edit_idea_params[:quality])
 
-      edit_idea = Idea.last
-
-      expect(edit_idea.title).to eq(edit_idea_params[:title])
-      expect(edit_idea.body).to eq(edit_idea_params[:body])
-      expect(edit_idea.quality).to eq(edit_idea_params[:quality])
     end
   end
 end
