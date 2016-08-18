@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#form-container {
+    height: 100px;
+}
+
 table {
     table-layout: fixed;
     word-wrap: break-word;

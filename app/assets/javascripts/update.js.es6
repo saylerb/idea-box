@@ -22,9 +22,8 @@ $(document).ready(() => {
       dataType: "JSON",
       data: edit_data,
       success: response => {
-        $(title_id).text(response.title)
-        $(body_id).text(response.body)
-        
+        $(title_id).text(trimBody(response.title))
+        $(body_id).text(trimBody(response.body))
       },
       error: error => console.log(error)
     })
