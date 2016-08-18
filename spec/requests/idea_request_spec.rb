@@ -19,13 +19,13 @@ RSpec.describe "idea endpoint" do
       expect(idea1_data[:title]).to eq(idea1.title)
       expect(idea1_data[:title]).to eq(idea1.title)
       expect(idea1_data[:body]).to eq(idea1.body)
-      expect(idea1_data[:quality]).to eq('swill')
+      expect(idea1_data[:quality]).to eq(0)
 
       expect(idea2_data.length).to eq(4)
       expect(idea2_data[:id]).to eq(idea2.id)
       expect(idea2_data[:title]).to eq(idea2.title)
       expect(idea2_data[:body]).to eq(idea2.body)
-      expect(idea2_data[:quality]).to eq('swill')
+      expect(idea2_data[:quality]).to eq(0)
     end
   end
 
@@ -47,7 +47,7 @@ RSpec.describe "idea endpoint" do
     it "creates an idea" do
       new_idea_params = { title: "Start Cubby Stuffers", 
                           body: "delicious", 
-                          quality: "genius"
+                          quality: 2 
                         }
 
       post "/api/v1/ideas", params: { idea: new_idea_params }
@@ -72,7 +72,7 @@ RSpec.describe "idea endpoint" do
 
       edit_idea_params = { title: "Buy oreos", 
                           body: "This is awesome!", 
-                          quality: "genius"
+                          quality: 2 
                          }
 
       put "/api/v1/ideas/#{idea1.id}", params: { idea: edit_idea_params}
