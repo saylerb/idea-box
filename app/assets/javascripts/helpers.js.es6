@@ -31,11 +31,16 @@ function appendRow(idea) {
 }
 
 function removeRow(idea_id) {
-   let id = "#idea-" + idea_id
-   $(id).remove()
+  let id = "#idea-" + idea_id
+  $(id).remove()
 }
 
 function mapQuality(index) {
   let qualities = ["swill", "plausible", "genius"]
   return qualities[index]
+}
+
+function clearFields() {
+  $("#titleField").val("")
+  $("#bodyField").val("")
 }
