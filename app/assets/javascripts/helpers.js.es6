@@ -1,6 +1,6 @@
 function appendRow(idea) {
   $("#table-body").append(
-    "<tr id=idea-"+ idea.id +">" +
+    "<tr id='idea-"+ idea.id +"'>" +
       "<td contenteditable='true' class='title input' id=title-" + idea.id + ">" +
         idea.title + "</td>" + 
 
@@ -8,12 +8,12 @@ function appendRow(idea) {
         idea.body + 
       "</td>" +
 
-      "<td>" + 
-        idea.quality + 
+      "<td id='quality-" + idea.id + "'>" +
+        mapQuality(idea.quality) + 
       "</td>" +
 
       "<td>" + 
-        "<div class='btn-group-vertical'>" + 
+        "<div data-quality='" + idea.quality + "'" + "class='btn-group-vertical'>" + 
           "<button type='button' id='upvote-" + idea.id + "'" + "class='upvote btn btn-primary'>"+ 
             "<span class='glyphicon glyphicon-arrow-up'></span>" +
           "</button>" + 
@@ -33,4 +33,9 @@ function appendRow(idea) {
 function removeRow(idea_id) {
    let id = "#idea-" + idea_id
    $(id).remove()
+}
+
+function mapQuality(index) {
+  let qualities = ["swill", "plausible", "genius"]
+  return qualities[index]
 }
