@@ -1,5 +1,5 @@
 function appendRow(idea) {
-  $("#table-body").append(
+  $("#table-body").prepend(
     "<tr id='idea-"+ idea.id +"'>" +
       "<td contenteditable='true' class='title input' id=title-" + idea.id + ">" +
         idea.title + "</td>" + 
