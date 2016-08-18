@@ -15,10 +15,4 @@ RSpec.describe Idea, type: :model do
     expect(idea).to respond_to(:created_at)
     expect(idea).to respond_to(:updated_at)
   end
-
-  it "tests the enum" do
-    expect(idea).to define_enum_for(:quality).
-      with([:swill, :plausible, :genius])
-  end
-
 end
