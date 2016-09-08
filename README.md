@@ -8,10 +8,11 @@
 
 ### Description
 
-This project was an exercise in building a single page CRUD application. It's a Rails
-application for the backend database, and uses jQuery and AJAX for the
-frontend.  This project was my first experience writing a javascript-focused
-application with heavy DOM manipulation using jQuery.
+This project was an exercise in building a single page CRUD application with JavaScript. It's a
+Rails application for the backend database, and uses jQuery and AJAX for the
+frontend.  This project was my first experience writing a JavaScript-focused
+application with heavy DOM manipulation using jQuery. I wrote it in ES6 and I
+also explored using capybara-webkit for testing the JavaScript .
 
 ### Usage
 
@@ -28,6 +29,22 @@ application with heavy DOM manipulation using jQuery.
   editing! Changes will be saved automatically when you click away.
 
 * Search: Start typing in the search box to filter the ideas list.
+
+### Installation
+
+1. `git clone git@github.com:saylerb/idea-box.git`
+
+1. `cd idea-box`
+
+1. `bundle install`
+
+1. `rails db:setup`
+
+1. `rails s`
+
+### Testing
+
+* Run `rspec` to run the test suite. 
 
 ### To Do 
  
